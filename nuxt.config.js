@@ -38,6 +38,7 @@ export default {
   ** https://nuxtjs.org/guide/plugins
   */
   plugins: [
+    '~/plugins/axios',
     { src: '@/plugins/icons', ssr: true }
   ],
   /*

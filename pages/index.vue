@@ -30,7 +30,15 @@
 </template>
 
 <script>
-export default {}
+
+export default {
+  created () {
+    this.$axios.get('http://example.com/').then(({ data }) => {
+      console.log(data)
+    })
+  }
+
+}
 </script>
 
 <style>
