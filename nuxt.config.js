@@ -1,8 +1,11 @@
-// eslint-disable-next-line nuxt/no-cjs-in-config
+/* eslint-disable nuxt/no-cjs-in-config */
+import config from './config'
+
 const path = require('path')
 // const IS_PROD = process.env.NODE_ENV === 'production'
 
 export default {
+  server: config.server,
   /*
   ** Nuxt rendering mode
   ** See https://nuxtjs.org/api/configuration-mode
@@ -18,11 +21,11 @@ export default {
   ** See https://nuxtjs.org/api/configuration-head
   */
   head: {
-    title: process.env.npm_package_name || '',
+    title: config.head.default_title || process.env.npm_package_name,
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
+      { hid: 'description', name: 'description', content: config.head.default_description || process.env.npm_package_description }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
@@ -32,14 +35,17 @@ export default {
   ** Global CSS
   */
   css: [
+    '~assets/css/global.less'
   ],
   /*
   ** Plugins to load before mounting the App
   ** https://nuxtjs.org/guide/plugins
   */
   plugins: [
-    '~/plugins/axios',
-    { src: '@/plugins/icons', ssr: true }
+    { src: '~/plugins/i18n' },
+    { src: '~/plugins/axios' },
+    { src: '~/plugins/backend/' },
+    { src: '~/plugins/icons', mode: 'client' }
   ],
   /*
   ** Auto import components
@@ -72,6 +78,8 @@ export default {
   ** See https://nuxtjs.org/api/configuration-build/
   */
   build: {
+    publicPath: '/resources/',
+    analyze: true,
     extend (config, ctx) {
       // ...
       const svgRule = config.module.rules.find(rule => rule.test.test('.svg'))
