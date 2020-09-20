@@ -2,15 +2,10 @@
 import config from './config'
 
 const path = require('path')
-// const IS_PROD = process.env.NODE_ENV === 'production'
+const IS_PROD = process.env.NODE_ENV === 'production'
 
 export default {
   server: config.server,
-  /*
-  ** Nuxt rendering mode
-  ** See https://nuxtjs.org/api/configuration-mode
-  */
-  mode: 'universal',
   /*
   ** Nuxt target
   ** See https://nuxtjs.org/api/configuration-target
@@ -74,12 +69,18 @@ export default {
   */
   axios: {},
   /*
+  ** Server Middleware
+  */
+  serverMiddleware: {
+    '/chino-api': '~/chino-api'
+  },
+  /*
   ** Build configuration
   ** See https://nuxtjs.org/api/configuration-build/
   */
   build: {
     publicPath: '/resources/',
-    analyze: true,
+    analyze: IS_PROD,
     extend (config, ctx) {
       // ...
       const svgRule = config.module.rules.find(rule => rule.test.test('.svg'))

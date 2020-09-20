@@ -10,5 +10,11 @@ export default {
   i18n: {
     default_locale: 'zh-CN',
     fallback_locale: 'en'
+  },
+  chinoApi: {
+    BASE_PATH: '/chino-api',
+    TITLE: 'Chino Api',
+    DESCRIPTION: '这是Chino Api~',
+    VERSION: '1.0'
   }
 }

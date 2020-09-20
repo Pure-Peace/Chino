@@ -30,6 +30,7 @@
     "@nuxtjs/eslint-module": "^2.0.0",
     "@nuxtjs/stylelint-module": "^4.0.0",
     "babel-eslint": "^10.1.0",
+    "doctrine-file": "^2.0.1",
     "eslint": "^7.5.0",
     "eslint-plugin-nuxt": "^1.0.0",
     "husky": "^4.2.5",
@@ -37,9 +38,11 @@
     "less-loader": "^7.0.1",
     "lint-staged": "^10.2.11",
     "prettier": "^2.1.1",
+    "recursive-iterator": "^3.3.0",
     "stylelint": "^13.6.1",
     "stylelint-config-standard": "^20.0.0",
     "stylelint-prettier": "^1.1.2",
-    "svg-sprite-loader": "^5.0.0"
+    "svg-sprite-loader": "^5.0.0",
+    "swagger-parser": "^10.0.2"
   }
 }
