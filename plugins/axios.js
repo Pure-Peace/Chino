@@ -2,14 +2,6 @@ const serverHandler = handle => process.server && handle()
 const clientHandler = handle => process.client && handle()
 
 export default function ({ store, redirect, req, router, app: { $axios } }) {
-  serverHandler(() => {
-    console.log('服务端')
-  })
-
-  clientHandler(() => {
-    console.log('客户端')
-  })
-
   // 请求拦截器
   $axios.onRequest((config) => {
     clientHandler(() => {
@@ -35,6 +27,10 @@ export default function ({ store, redirect, req, router, app: { $axios } }) {
         // NProgress.done()
       })
 
+      serverHandler(() => {
+
+      })
+
       resHandlers[response.data.code]()
     },
     (error) => {
@@ -49,6 +45,10 @@ export default function ({ store, redirect, req, router, app: { $axios } }) {
 
       clientHandler(() => {
         // NProgress.done()
+      })
+
+      serverHandler(() => {
+
       })
 
       errHandlers[error.response.status]()

@@ -9,9 +9,8 @@
 <script>
 
 export default {
-  mounted () {
-    console.log(this)
-    this.$i18n.locale = 'zh-CN'
+  created () {
+
   }
 
 }

@@ -1,15 +1,19 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
-
-Vue.use(Vuex)
-
-const store = () => new Vuex.Store({
-
-  state: {
-  },
-  mutations: {
-
-  }
+export const state = () => ({
+  locale: 'zh-CN'
 })
 
-export default store
+export const getters = {
+  getLocale (state) {
+    return state.locale
+  }
+}
+
+export const mutations = {
+  setLocale (state, locale) {
+    state.locale = locale
+  }
+}
+
+export const actions = {
+  // TODO ajax here
+}
