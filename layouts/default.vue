@@ -2,9 +2,9 @@
   <div id="app">
     <div id="main">
       <sider-layout
-        :fixed="themeSiderFixed"
-        :show="themeShowSider"
-        :open="themeOpenSider"
+        :fixed="siderFixed"
+        :show="showSider"
+        :open="openSider"
         :mini="miniScreen"
       />
       <div class="main-layout">
@@ -14,8 +14,8 @@
           @click.stop="sidebarOpenSwitch"
         />
         <main-layout
-          :fixed="themeTopNavbarFixed"
-          :show-breadcrum="themeShowBreadcrum"
+          :fixed="topNavbarFixed"
+          :show-breadcrum="showBreadcrum"
         />
       </div>
     </div>
@@ -34,14 +34,14 @@ export default {
   },
   data () {
     return {
-      screenWidth: process.client ? document.body.clientWidth : 0,
+      screenWidth: process.client && document.body.clientWidth,
       watingRefresh: false
     }
   },
   computed: {
-    ...mapGetters(['themeSiderFixed', 'themeOpenSider', 'themeTopNavbarFixed', 'themeShowSider', 'themeShowBreadcrum']),
+    ...mapGetters('layouts', ['siderFixed', 'openSider', 'topNavbarFixed', 'showSider', 'showBreadcrum']),
     showMask () {
-      return this.miniScreen && this.themeOpenSider
+      return this.miniScreen && this.openSider
     },
     miniScreen () {
       return this.screenWidth <= 900
@@ -49,7 +49,7 @@ export default {
   },
   watch: {
     screenWidth (val) {
-      if (this.showMask) { this.$store.commit('setThemeOpenSider', false) }
+      if (this.showMask) { this.$store.commit('layouts/setOpenSider', false) }
       if (!this.watingRefresh) {
         this.screenWidth = val
         this.$store.commit('setPageWidth', val)
@@ -62,9 +62,8 @@ export default {
     }
   },
   mounted () {
-    console.log(this)
     this.$store.commit('setIsMobile', this.isMobile())
-    if (this.miniScreen) { this.$store.commit('setThemeOpenSider', false) }
+    if (this.miniScreen) { this.$store.commit('layouts/setOpenSider', false) }
     const that = this
     window.screenWidth = document.body.clientWidth
     that.screenWidth = window.screenWidth
@@ -77,7 +76,7 @@ export default {
   },
   methods: {
     sidebarOpenSwitch () {
-      this.$store.commit('setThemeOpenSider', false)
+      this.$store.commit('layouts/setOpenSider', false)
     },
     isMobile () {
       return navigator.userAgent.match(

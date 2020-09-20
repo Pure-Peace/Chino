@@ -14,7 +14,7 @@
         <div id="sider-layout-content">
           <div class="logo-box">
             <div
-              v-if="!themeTopNavbarFixed"
+              v-if="!topNavbarFixed"
               class="logo-box-content"
             >
               <div>
@@ -86,7 +86,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['themeTopNavbarFixed']),
+    ...mapGetters('layouts', ['topNavbarFixed']),
     siderLayoutBoxClass () {
       return this.fixed ? 'sider-layout-box-fixed' : 'sider-layout-box-common'
     },
@@ -95,7 +95,7 @@ export default {
     },
     boxWidth () {
       const width = (this.open ? 210 : this.mini ? 0 : 80)
-      this.$store.commit('setThemeSiderWidth', this.mini ? 0 : width)
+      this.$store.commit('layouts/setSiderWidth', this.mini ? 0 : width)
       return width
     },
     logoTextStyle () {
@@ -105,7 +105,7 @@ export default {
   methods: {
     jumpTo (name) {
       this.$router.push({ name })
-      if (this.mini) { this.$store.commit('setThemeOpenSider', false) }
+      if (this.mini) { this.$store.commit('layouts/setOpenSider', false) }
     }
   }
 }

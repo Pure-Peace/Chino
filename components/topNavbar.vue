@@ -13,9 +13,9 @@
     >
       <div id="top-navbar-content">
         <div
-          v-if="themeTopNavbarFixed"
+          v-if="topNavbarFixed"
           class="logo-box"
-          :style="themeOpenSider ? 'width: 210px;' : 'width: 80px;'"
+          :style="openSider ? 'width: 210px;' : 'width: 80px;'"
         >
           <div
             class="logo-box-content"
@@ -36,12 +36,12 @@
           </div>
         </div>
         <div
-          v-if="themeShowSider"
+          v-if="showSider"
           class="sidebar-open-control-button"
           :style="miniSizePage ? 'margin-left: 0px;' : 'margin-left: 25px;'"
           @click="sidebarOpenSwitch"
         >
-          <svg-icon :icon-class="themeOpenSider ? 'outdent' : 'indent'" />
+          <svg-icon :icon-class="openSider ? 'outdent' : 'indent'" />
         </div>
         <div
           v-if="!miniSizePage"
@@ -148,7 +148,8 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['themeOpenSider', 'pageWidth', 'isMobile', 'themeTopNavbarFixed', 'themeShowSider']),
+    ...mapGetters('layouts', ['openSider', 'topNavbarFixed', 'showSider']),
+    ...mapGetters(['isMobile', 'pageWidth']),
     topNavbarBoxClass () {
       return this.fixed ? 'top-navbar-box-fixed' : ''
     },
@@ -160,7 +161,7 @@ export default {
       return mini
     },
     logoTextStyle () {
-      return this.themeOpenSider ? 'opacity: 1; width: 90px;' : 'opacity: 0; width: 0;'
+      return this.openSider ? 'opacity: 1; width: 90px;' : 'opacity: 0; width: 0;'
     }
   },
   watch: {
@@ -177,16 +178,16 @@ export default {
       if (this.openTopNavbarFixedMenu) { this.openTopNavbarFixedMenu = false }
     },
     sidebarOpenSwitch () {
-      this.$store.commit('setThemeOpenSider')
+      this.$store.commit('layouts/setOpenSider')
     },
     sidebarFixedSwitch () {
-      this.$store.commit('setThemeSiderFixed')
+      this.$store.commit('layouts/setSiderFixed')
     },
     topNavbarFixedSwitch () {
-      this.$store.commit('setThemeTopNavbarFixed')
+      this.$store.commit('layouts/setTopNavbarFixed')
     },
     sidebarShowSwitch () {
-      this.$store.commit('setThemeShowSider')
+      this.$store.commit('layouts/setShowSider')
     },
     handleSearch () {
 

@@ -2,33 +2,33 @@
   <div>
     <div
       class="primary-button"
-      @click="()=>$store.commit('setThemeSiderFixed')"
+      @click="()=>$store.commit('layouts/setSiderFixed')"
     >
-      侧边栏固定：{{ themeSiderFixed | formatBool }}
+      侧边栏固定：{{ siderFixed | formatBool }}
     </div>
     <div
       class="primary-button"
-      @click="()=>$store.commit('setThemeOpenSider')"
+      @click="()=>$store.commit('layouts/setOpenSider')"
     >
-      开启侧边栏：{{ themeOpenSider | formatBool }}
+      开启侧边栏：{{ openSider | formatBool }}
     </div>
     <div
       class="primary-button"
-      @click="()=>$store.commit('setThemeTopNavbarFixed')"
+      @click="()=>$store.commit('layouts/setTopNavbarFixed')"
     >
-      顶部导航栏固定：{{ themeTopNavbarFixed | formatBool }}
+      顶部导航栏固定：{{ topNavbarFixed | formatBool }}
     </div>
     <div
       class="primary-button"
-      @click="()=>$store.commit('setThemeShowSider')"
+      @click="()=>$store.commit('layouts/setShowSider')"
     >
-      显示侧边栏：{{ themeShowSider | formatBool }}
+      显示侧边栏：{{ showSider | formatBool }}
     </div>
     <div
       class="primary-button"
-      @click="()=>$store.commit('setThemeShowBreadcrum')"
+      @click="()=>$store.commit('layouts/setShowBreadcrum')"
     >
-      显示面包屑导航：{{ themeShowBreadcrum | formatBool }}
+      显示面包屑导航：{{ showBreadcrum | formatBool }}
     </div>
     <div
       class="primary-button"
@@ -48,7 +48,8 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['themeSiderFixed', 'themeOpenSider', 'themeTopNavbarFixed', 'themeShowSider', 'themeShowBreadcrum', 'isMobile'])
+    ...mapGetters('layouts', ['siderFixed', 'openSider', 'topNavbarFixed', 'showSider', 'showBreadcrum']),
+    ...mapGetters(['isMobile'])
   }
 }
 </script>
