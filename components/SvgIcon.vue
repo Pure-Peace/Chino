@@ -13,7 +13,8 @@ export default {
   props: {
     iconClass: {
       type: String,
-      required: true
+      default: '',
+      require: true
     },
     className: {
       type: String,
