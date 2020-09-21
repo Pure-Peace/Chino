@@ -3,7 +3,7 @@ const config = require('../../config').default
 module.exports = {
   route: {
     basePath: config.chinoApi.BASE_PATH,
-    url: '/docs',
+    url: '/',
     docs: '/swagger-docs.json'
   },
   swaggerDefinition: {

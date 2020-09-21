@@ -469,6 +469,12 @@ function generateSpecAndMount (app) {
 };
 
 function createSwagger (app) {
+  const routes = require('./require-all')({
+    dirname: path.join(__dirname, '/../../routes')
+  })
+  for (const route in routes) {
+    app.use(routes[route])
+  }
   return generateSpecAndMount(app)(config)
 };
 
