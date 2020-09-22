@@ -36,6 +36,13 @@
     >
       移动端显示：{{ isMobile | formatBool }}
     </div>
+    <div>haha: {{ $t('hello') }}</div>
+    <div
+      class="primary-button"
+      @click="()=>$store.commit('setLocale', 'en-US')"
+    >
+      设置英语
+    </div>
   </div>
 </template>
 <script>

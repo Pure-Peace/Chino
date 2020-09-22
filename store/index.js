@@ -16,7 +16,8 @@ export const getters = {
 
 export const mutations = {
   setLocale (state, locale) {
-    Vue.set(state, 'locale', locale)
+    // Vue.set(state, 'locale', locale)
+    console.log(this)
   },
   setPageWidth (state, setting) {
     Vue.set(state, 'pageWidth', setting)

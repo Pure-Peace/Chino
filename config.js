@@ -12,6 +12,7 @@ export default {
     fallback_locale: 'en'
   },
   chinoApi: {
+    ENABLED: false,
     BASE_PATH: '/chino-api',
     TITLE: 'Chino Api',
     DESCRIPTION: '这是Chino Api~',

@@ -37,6 +37,7 @@ export default {
   ** https://nuxtjs.org/guide/plugins
   */
   plugins: [
+    { src: '~/plugins/cookies' },
     { src: '~/plugins/i18n' },
     { src: '~/plugins/axios' },
     { src: '~/plugins/backend/' },
@@ -71,14 +72,24 @@ export default {
   /*
   ** Server Middleware
   */
-  serverMiddleware: {
-    '/chino-api': '~/chino-api'
-  },
+  serverMiddleware: (() => {
+    // here's your middleware
+    const middleware = {
+
+    }
+
+    // start chino api if enabled
+    if (config.chinoApi.ENABLED) {
+      middleware[config.chinoApi.BASE_PATH] = `~${config.chinoApi.BASE_PATH}`
+    }
+    return middleware
+  })(),
   /*
   ** Build configuration
   ** See https://nuxtjs.org/api/configuration-build/
   */
   build: {
+    vendor: ['vue-i18n'],
     publicPath: '/resources/',
     analyze: IS_PROD,
     extend (config, ctx) {
@@ -95,5 +106,9 @@ export default {
         }
       })
     }
+  },
+  // customize nuxt.js router (vue-router).
+  router: {
+    middleware: 'i18n'
   }
 }

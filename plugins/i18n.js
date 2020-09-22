@@ -24,12 +24,4 @@ export default ({ app, store }) => {
     fallbackLocale: store.state.locale || 'zh-CN',
     messages: loadLocaleMessages()
   })
-
-  app.i18n.path = (link) => {
-    if (app.i18n.locale === app.i18n.fallbackLocale) {
-      return `/${link}`
-    }
-
-    return `/${app.i18n.locale}/${link}`
-  }
 }
