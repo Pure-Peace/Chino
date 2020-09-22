@@ -1,8 +1,9 @@
 import Vue from 'vue'
+import config from '~/config'
 
 export const state = () => {
   return {
-    locale: 'zh-CN',
+    locale: config.i18n.default_locale,
     isMobile: false,
     pageWidth: 1024
   }
@@ -16,8 +17,9 @@ export const getters = {
 
 export const mutations = {
   setLocale (state, locale) {
-    // Vue.set(state, 'locale', locale)
-    console.log(this)
+    Vue.set(state, 'locale', locale)
+    Vue.set(this.app.i18n, 'locale', locale)
+    if (process.client) { this.$cookies.set('locale', locale, '5y') }
   },
   setPageWidth (state, setting) {
     Vue.set(state, 'pageWidth', setting)

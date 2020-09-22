@@ -9,7 +9,7 @@ export default {
   },
   i18n: {
     default_locale: 'zh-CN',
-    fallback_locale: 'en'
+    fallback_locale: 'en-US'
   },
   chinoApi: {
     ENABLED: false,

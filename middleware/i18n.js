@@ -11,6 +11,5 @@ export default function ({ isHMR, app, store, route, params, error, redirect, re
   const locale = cookies.locale
   if (locale) {
     store.commit('setLocale', locale)
-    app.i18n.locale = store.state.locale
   }
 }

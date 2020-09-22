@@ -12,7 +12,6 @@ module.exports = {
       title: config.chinoApi.TITLE,
       version: config.chinoApi.VERSION
     },
-    host: `${config.server.host}:${config.server.port}`,
     basePath: config.chinoApi.BASE_PATH,
     produces: [
       'application/json',

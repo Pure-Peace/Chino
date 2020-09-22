@@ -39,7 +39,7 @@
     <div>haha: {{ $t('hello') }}</div>
     <div
       class="primary-button"
-      @click="()=>$store.commit('setLocale', 'en-US')"
+      @click="test"
     >
       设置英语
     </div>
@@ -57,6 +57,11 @@ export default {
   computed: {
     ...mapGetters('layouts', ['siderFixed', 'openSider', 'topNavbarFixed', 'showSider', 'showBreadcrum']),
     ...mapGetters(['isMobile'])
+  },
+  methods: {
+    test () {
+      this.$store.commit('setLocale', 'en-US')
+    }
   }
 }
 </script>
