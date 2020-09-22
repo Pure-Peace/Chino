@@ -80,7 +80,8 @@ export default {
 
     // start chino api if enabled
     if (config.chinoApi.ENABLED) {
-      middleware[config.chinoApi.BASE_PATH] = `~${config.chinoApi.BASE_PATH}`
+      const CHINO_PATH = config.chinoApi.BASE_PATH
+      middleware[CHINO_PATH] = `~${CHINO_PATH}`
     }
     return middleware
   })(),
