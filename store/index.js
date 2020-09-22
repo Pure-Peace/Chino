@@ -4,6 +4,7 @@ import config from '~/config'
 export const state = () => {
   return {
     locale: config.i18n.default_locale,
+    fallbackLocale: config.i18n.fallback_locale,
     isMobile: false,
     pageWidth: 1024
   }

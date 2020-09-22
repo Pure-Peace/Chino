@@ -43,6 +43,12 @@
     >
       设置英语
     </div>
+    <div
+      class="primary-button"
+      @click="test1"
+    >
+      设置中文
+    </div>
   </div>
 </template>
 <script>
@@ -61,6 +67,9 @@ export default {
   methods: {
     test () {
       this.$store.commit('setLocale', 'en-US')
+    },
+    test1 () {
+      this.$store.commit('setLocale', 'zh-CN')
     }
   }
 }
