@@ -11,11 +11,15 @@ export default {
     default_locale: 'zh-CN',
     fallback_locale: 'en-US'
   },
-  chinoApi: {
-    ENABLED: false,
-    BASE_PATH: '/chino-api',
-    TITLE: 'Chino Api',
-    DESCRIPTION: '这是Chino Api~',
-    VERSION: '1.0'
+  chino_api: {
+    enabled: false,
+    base_path: '/chino-api',
+    title: 'Chino Api',
+    description: '这是Chino Api~',
+    version: '1.0'
+  },
+  cookies: {
+    expires: '1m',
+    only_https: false
   }
 }

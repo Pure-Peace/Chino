@@ -64,6 +64,9 @@ export default {
     ...mapGetters('layouts', ['siderFixed', 'openSider', 'topNavbarFixed', 'showSider', 'showBreadcrum']),
     ...mapGetters(['isMobile'])
   },
+  mounted () {
+    console.log(this.$storages)
+  },
   methods: {
     test () {
       this.$store.commit('setLocale', 'en-US')

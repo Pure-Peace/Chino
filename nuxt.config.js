@@ -37,7 +37,7 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: config.head.default_description || process.env.npm_package_description }
+      { hid: 'description', name: 'description', content: config.head.default_title || process.env.npm_package_description }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
@@ -54,6 +54,7 @@ export default {
   ** https://nuxtjs.org/guide/plugins
   */
   plugins: [
+    { src: '~/plugins/storages', mode: 'client' },
     { src: '~/plugins/bus' },
     { src: '~/plugins/cookies' },
     { src: '~/plugins/i18n' },
@@ -97,8 +98,8 @@ export default {
     }
 
     // start chino api if enabled
-    if (config.chinoApi.ENABLED) {
-      const CHINO_PATH = config.chinoApi.BASE_PATH
+    if (config.chino_api.enabled) {
+      const CHINO_PATH = config.chino_api.base_path
       middleware[CHINO_PATH] = `~${CHINO_PATH}`
     }
     return middleware
