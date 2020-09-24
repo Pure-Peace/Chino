@@ -39,15 +39,15 @@
     <div>haha: {{ $t('hello') }}</div>
     <div
       class="primary-button"
-      @click="test"
+      @click="()=>this.$store.commit('setLocale', 'zh-CN')"
     >
-      设置英语
+      设置中文
     </div>
     <div
       class="primary-button"
-      @click="test1"
+      @click="()=>this.$store.commit('setLocale', 'en-US')"
     >
-      设置中文
+      设置英语
     </div>
   </div>
 </template>
@@ -68,12 +68,6 @@ export default {
     console.log(this.$storages)
   },
   methods: {
-    test () {
-      this.$store.commit('setLocale', 'en-US')
-    },
-    test1 () {
-      this.$store.commit('setLocale', 'zh-CN')
-    }
   }
 }
 </script>

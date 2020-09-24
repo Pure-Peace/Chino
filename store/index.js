@@ -1,13 +1,21 @@
 import Vue from 'vue'
-import config from '~/config'
 
 export const state = () => {
-  return {
-    locale: config.i18n.default_locale,
-    fallbackLocale: config.i18n.fallback_locale,
+  let server = {}
+  const client = {
     isMobile: false,
     pageWidth: 1024
   }
+
+  if (process.server) {
+    const config = require('~/config').default
+    server = {
+      locale: config.i18n.default_locale,
+      fallbackLocale: config.i18n.fallback_locale
+    }
+  }
+
+  return Object.assign(client, server)
 }
 
 export const getters = {
